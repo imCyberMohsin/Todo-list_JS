@@ -16,13 +16,22 @@
     <div class="container">
         <h1>Todo List <i class="fa-solid fa-clipboard-list"></i></h1>
         <form class="form">
-            <input class="note-input" type="text" placeholder="Enter task here" required>
+            <input class="task-input" type="text" placeholder="Enter task here" required>
             <button><i class="fa-solid fa-plus add-btn"></i></button>
         </form>
 
+        <!-- filter -->
+        <div class="select">
+            <select name="todos" class="filter-todo">
+                <option value="all">Show All</option>
+                <option value="completed">Done</option>
+                <option value="incomplete">! Done</option>
+            </select>
+        </div>
+
         <!-- Todo-list task container -->
         <div class="todo-container">
-            <h2>Tasks To Complete</h2>
+            <h2>Today's Todo List</h2>
             <ul class="todo-list">
 
                 <!--! Create this using JS -->
@@ -31,6 +40,7 @@
                     <button class="complete-btn"><i class="fas fa-check"></i></button>
                     <button class="trash-btn"><i class="fas fa-trash"></i></button>
                 </div>
+                <!-- more 'todo' divs will be added here with JS -->
 
             </ul>
         </div>

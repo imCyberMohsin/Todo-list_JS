@@ -2,8 +2,9 @@
 
 //! Elements Selectors
 const addBtn = document.querySelector('.add-btn');
-const inputText = document.querySelector('.note-input');
+const inputText = document.querySelector('.task-input');
 const todoList = document.querySelector('.todo-list');
+const filterOptions = document.querySelector('.filter-todo');
 
 //! Functions
 //? Add Todo Div 
@@ -56,13 +57,45 @@ const deleteCheck = (e) => {
         // console.log("check");
         const todo = item.parentElement;
         todo.classList.toggle('completed');
-        if (todo.classList.contains('completed')) {
-            todo.style.color = 'var(--accent-color)';
-        } else {
-            todo.style.color = 'white';
-
-        }
+        // if (todo.classList.contains('completed')) {
+        //     todo.style.color = 'var(--accent-color)';
+        // } else {
+        //     todo.style.color = 'white';
+        // }
     }
+}
+
+
+//? Filter Function
+const filterTodo = (e) => {
+
+    // Select all todo elements
+    const todos = todoList.querySelectorAll('.todo');
+    // console.log(todos);
+
+    todos.forEach((todo) => {
+        switch (e.target.value) {
+            case "all":
+                todo.style.display = 'flex';
+                break;
+
+            case "completed":
+                if (todo.classList.contains('completed')) {
+                    todo.style.display = 'flex';
+                } else {
+                    todo.style.display = 'none';
+                }
+                break;
+
+            case "incomplete":
+                if (!todo.classList.contains('completed')) {
+                    todo.style.display = 'flex';
+                } else {
+                    todo.style.display = 'none';
+                }
+                break;
+        }
+    })
 }
 
 //! Event Listners
@@ -72,3 +105,12 @@ addBtn.addEventListener('click', addTodo);
 //? Delete & Check  
 todoList.addEventListener('click', deleteCheck);
 
+//? Filter Options
+filterOptions.addEventListener('click', filterTodo); 
+
+// Add event listener for Enter key press
+inputText.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        addTodo(e);
+    }
+});
