@@ -22,6 +22,9 @@ const addTodo = (e) => {
     // now put this 'li' inside 'todo div'
     todoDiv.appendChild(newTodo);
 
+    //? Add todo to local storage
+    // saveToLocal(inputText.value); 
+
     //? Complete BTN
     const completeBtn = document.createElement('button');
     completeBtn.innerHTML = '<i class="fas fa-check"></i>';
@@ -98,15 +101,23 @@ const filterTodo = (e) => {
     })
 }
 
+//? Save TodoList to Local Storage
+// const saveToLocal = (todo) =>{
+//     // Check if there is anything already there.
+//     let todos;
+//     if(localStorage.getItem("todos") === null){
+//         todos = [];
+//     } else{
+//         todos = JSON.parse(localStorage.getItem('todos'));
+//     }
+
+//     todos.push(todo);
+//     localStorage.getItem("todos", JSON.stringify(todos))
+// } 
+
 //! Event Listners
 //? Add Todo 
 addBtn.addEventListener('click', addTodo);
-
-//? Delete & Check  
-todoList.addEventListener('click', deleteCheck);
-
-//? Filter Options
-filterOptions.addEventListener('click', filterTodo); 
 
 // Add event listener for Enter key press
 inputText.addEventListener('keydown', (e) => {
@@ -114,3 +125,9 @@ inputText.addEventListener('keydown', (e) => {
         addTodo(e);
     }
 });
+
+//? Delete & Check  
+todoList.addEventListener('click', deleteCheck);
+
+//? Filter Options
+filterOptions.addEventListener('click', filterTodo); 
